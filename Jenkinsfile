@@ -27,7 +27,7 @@ pipeline {
                 
                 sh '''
                     echo sample data into file line 1 > FILE.txt
-                    echo sample data into file line 2 > FILE.txt
+                    echo sample data into file line 2 >> FILE.txt
                 '''
                 
                 script{
