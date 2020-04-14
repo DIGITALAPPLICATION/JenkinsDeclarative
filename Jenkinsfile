@@ -1,32 +1,13 @@
 pipeline {
     agent any
-    parameters {
-	choice(
-	    choices: ['QA' , 'PROD'],
-	    description: '',
-	    name: 'REQUESTED_ACTION'
-	    )
+    tools{
+        maven 'maven-3.6.2' // make sure this is configured in Manage Jenkins --> Global Tool Configuration
     }
-
     stages {
-	stage ('QA') {
-	    when {
-		// Only say hello if a "greeting" is requested
-		expression { params.REQUESTED_ACTION == 'QA' }
-	    }
-	    steps {
-		echo "Deployment for QA will be executed"
-	    }
-	}
-	stage ('PROD') {
-	    when {
-		// Only say hello if a "greeting" is requested
-		expression { params.REQUESTED_ACTION == 'PROD' }
-	    }
-	    steps {
-		echo "Deployment for PROD will be executed"
-	    }
-	}
-	   
+        stage('Example') {
+            steps {
+                    sh 'mvn -v'
+            }
+        }
     }
 }
