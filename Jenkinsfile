@@ -15,7 +15,7 @@ pipeline {
 		expression { params.REQUESTED_ACTION == 'QA' }
 	    }
 	    steps {
-		echo "Deployment or QA will be executed"
+		echo "Deployment for QA will be executed"
 	    }
 	}
 	stage ('PROD') {
@@ -24,7 +24,7 @@ pipeline {
 		expression { params.REQUESTED_ACTION == 'PROD' }
 	    }
 	    steps {
-		echo "Deployment or PROD will be executed"
+		echo "Deployment for PROD will be executed"
 	    }
 	}
 	   
