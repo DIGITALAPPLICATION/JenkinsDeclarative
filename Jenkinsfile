@@ -25,13 +25,14 @@ pipeline {
                 echo "Choice: ${params.CHOICE}"
 
                 echo "Password: ${params.PASSWORD}"
-                
-                if (fileExists('FILE.txt')) {
-                    echo 'Yes, file uploaded to Jenkins workspace'
-                    def data = readFile "${env.WORKSPACE}/FILE.txt"
-                    println(data)
-                } else {
-                    echo 'No, file may not uploaded to Jenkins workspace'
+                script{
+                    if (fileExists('FILE.txt')) {
+                        echo 'Yes, file uploaded to Jenkins workspace'
+                        def data = readFile "${env.WORKSPACE}/FILE.txt"
+                        println(data)
+                    } else {
+                        echo 'No, file may not uploaded to Jenkins workspace'
+                    }
                 }
             }
         }
