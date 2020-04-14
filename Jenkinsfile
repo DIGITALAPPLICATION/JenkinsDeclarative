@@ -6,7 +6,8 @@ pipeline {
     stages {
         stage('Example') {
             steps {
-                    sh 'mvn -v'
+                    git branch: 'sample', credentialsId: 'jenGit', url: 'https://github.com/DIGITALAPPLICATION/WebApp.git'
+                    sh 'mvn -V clean install'
             }
         }
     }
