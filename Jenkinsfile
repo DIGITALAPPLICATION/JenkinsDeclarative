@@ -7,7 +7,7 @@ pipeline {
         stage('Example') {
             steps {
                     git branch: 'sample', credentialsId: 'jenGit', url: 'https://github.com/DIGITALAPPLICATION/WebApp.git'
-                    sh 'mvn -v clean compile'
+                    sh 'mvn -V clean compile'
             }
         }
     }
