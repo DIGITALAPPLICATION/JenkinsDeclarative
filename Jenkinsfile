@@ -1,7 +1,7 @@
 pipeline {
     agent any
     parameters {
-        string(name: 'yyyyy', defaultValue: 'XXX', description: 'Hello world')
+        string(name: 'User', defaultValue: 'DevOps', description: 'Hello world')
 
         text(name: 'Demo', defaultValue: '', description: 'Demo parameter')
 
