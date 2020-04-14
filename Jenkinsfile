@@ -1,18 +1,13 @@
-
 pipeline {
     agent any
-
+    options {
+        timeout(time: 30, unit: 'MINUTES')
+        //retry(3)
+    }
     stages {
         stage('Example') {
             steps {
-
-                    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'jenGit', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
-                        sh 'echo uname=$USERNAME pwd=$PASSWORD'
-
-                        println("UserName: "+env.USERNAME)
-
-                    }
-
+                echo 'Hello World'
             }
         }
     }
