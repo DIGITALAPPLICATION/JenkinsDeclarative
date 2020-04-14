@@ -4,7 +4,7 @@
         stages {
             stage('Example') {
                 steps {
-                    echo0 'Hello World'
+                    echo 'Hello World'
                 }
             }
         }
