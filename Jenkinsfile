@@ -2,7 +2,7 @@ pipeline {
 	agent any
 	triggers {
 		//Execute weekdays every four hours starting at minute 0
-		cron('0 */4 * * 1-5')
+		cron('11 1 * * 1-5')
 		//Query repository weekdays every four hours starting at minute 0
 		pollSCM('*/1 * * * 1-5')
 		//Execute when either job1 or job2 are successful
