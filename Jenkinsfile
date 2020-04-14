@@ -1,9 +1,11 @@
 pipeline {
     agent any
+    tools{
+        maven 'maven-3.6.2' // make sure this is configured in Global Tool Configuration
+    }
     stages {
         stage('Example') {
-         	agent { docker 'maven:3-alpine' } 
-            	steps {
+         	steps {
                		sh 'mvn -v'
             }
         }
