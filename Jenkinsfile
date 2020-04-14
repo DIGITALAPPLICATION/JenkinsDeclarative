@@ -6,6 +6,9 @@ pipeline {
     }
     stages {
         stage('Example') {
+            agent{
+                   label 'linux'
+            }
             steps {
                 echo 'Hello World'
             }
