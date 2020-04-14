@@ -1,12 +1,13 @@
 pipeline {
     agent any
     tools{
-        maven 'maven-3.6.2' // make sure this is configured in Global Tool Configuration
+        maven 'maven-3.0.3' // make sure this is configured in Manage Jenkins --> Global Tool Configuration
     }
     stages {
         stage('Example') {
-         	steps {
-               		sh 'mvn -v'
+            steps {
+                    git branch: 'sample', credentialsId: 'jenGit', url: 'https://github.com/DIGITALAPPLICATION/WebApp.git'
+                    sh 'mvn -v clean compile'
             }
         }
     }
