@@ -11,7 +11,6 @@ pipeline {
 
         password(name: 'PASSWORD', defaultValue: 'Key', description: 'Enter a password')
 
-        file(name: "FILE.txt", description: "file to upload")
     }
     stages {
         stage('Example') {
@@ -25,13 +24,19 @@ pipeline {
                 echo "Choice: ${params.CHOICE}"
 
                 echo "Password: ${params.PASSWORD}"
+                
+                sh '''
+                    echo sample data into file line 1 > FILE.txt
+                    echo sample data into file line 2 > FILE.txt
+                '''
+                
                 script{
                     if (fileExists("${env.WORKSPACE}/FILE.txt")) {
-                        echo 'Yes, file uploaded to Jenkins workspace'
+                        echo 'Yes, file created in Jenkins workspace'
                         def data = readFile "${env.WORKSPACE}/FILE.txt"
                         println(data)
                     } else {
-                        echo 'No, file may not uploaded to Jenkins workspace'
+                        echo 'No, file may not created in Jenkins workspace'
                     }
                 }
             }
