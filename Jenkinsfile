@@ -6,8 +6,7 @@ pipeline {
             steps {
                 
                     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'jenGit', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
-                        echo $USERNAME
-                        echo $PASSWORD
+                        sh 'echo uname=$USERNAME pwd=$PASSWORD'
                     }
                 
             }
