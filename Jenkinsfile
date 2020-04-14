@@ -1,18 +1,21 @@
 pipeline {
-	agent any
-	stages {
-		stage ('checkout') {
-			steps{
-				git branch: 'sample', credentialsId: 'jenGit', url: 'https://github.com/DIGITALAPPLICATION/WebApp.git'
-			}
-		}
-		stage ('Deploy stage') {
-			when {
-				branch 'master'
-			}
-			steps {
-				echo 'Deploy master to stage'
-			}
-		}
-	}
+    agent any
+    parameters {
+        choice(
+            choices: ['greeting' , 'silence'],
+            description: '',
+            name: 'REQUESTED_ACTION')
+    }
+
+    stages {
+        stage ('Speak') {
+            when {
+                // Only say hello if a "greeting" is requested
+                expression { params.REQUESTED_ACTION == 'greeting' }
+            }
+            steps {
+                echo "Hello, bitwiseman!"
+            }
+        }
+    }
 }
