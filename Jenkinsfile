@@ -11,7 +11,7 @@ pipeline {
 	stages {
 		stage('trigger-example'){
 			steps{
-				echo "Run some script here"
+				echo "Run some script "
 			}
 		}
 	}
