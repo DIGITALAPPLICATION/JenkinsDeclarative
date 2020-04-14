@@ -1,18 +1,21 @@
 pipeline {
-    agent any
-    stages {
-        stage('Example') {
-          agent { docker 'maven:3-alpine' } 
+      agent none
+      stages {
+        stage('Run Tests') {
+          parallel {
+            stage('Test On Windows') {
+              agent { label "windows" }
               steps {
-                  sh 'mvn -v'
+                bat "run-tests.bat"
+              }
             }
-        }
-        stage('Example Test') {
-            agent { docker 'openjdk:8-jre' } 
-            steps {
-                echo 'Hello, JDK'
-                sh 'java -version'
+            stage('Test On Linux') {
+              agent { label "linux" }
+              steps {
+                sh "run-tests.sh"
+              }
             }
+          }
         }
+      }
     }
-}
