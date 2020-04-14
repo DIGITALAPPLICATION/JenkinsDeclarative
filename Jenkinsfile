@@ -26,7 +26,7 @@ pipeline {
 
                 echo "Password: ${params.PASSWORD}"
                 script{
-                    if (fileExists('FILE.txt')) {
+                    if (fileExists("${env.WORKSPACE}/FILE.txt")) {
                         echo 'Yes, file uploaded to Jenkins workspace'
                         def data = readFile "${env.WORKSPACE}/FILE.txt"
                         println(data)
