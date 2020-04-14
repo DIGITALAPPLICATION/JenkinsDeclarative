@@ -1,18 +1,22 @@
 pipeline {
-	agent any
-	triggers {
-		//Execute weekdays every four hours starting at minute 0
-		cron('21 13 * * 1-5')
-		//Query repository weekdays every four hours starting at minute 0
-		pollSCM('*/1 * * * 1-5')
-		//Execute when either job1 or job2 are successful
-		upstream(upstreamProjects: 'job1, job2', threshold: hudson.model.Result.SUCCESS)
+    agent any
+    parameters {
+	choice(
+	    choices: ['greeting' , 'silence'],
+	    description: '',
+	    name: 'REQUESTED_ACTION'
+	    )
+    }
+
+    stages {
+	stage ('Speak') {
+	    when {
+		// Only say hello if a "greeting" is requested
+		expression { params.REQUESTED_ACTION == 'greeting' }
+	    }
+	    steps {
+		echo "Hello, bitwiseman!"
+	    }
 	}
-	stages {
-		stage('trigger-example'){
-			steps{
-				echo "Run some script here "
-			}
-		}
-	}
+    }
 }
