@@ -7,7 +7,7 @@ pipeline {
 
         booleanParam(name: 'Boolean', defaultValue: true, description: 'Boolean value')
 
-        choice(name: 'CHOICE', choices: ['A', 'B', 'C'], description: ‘Choose one')
+        choice(name: 'CHOICE', choices: ['A', 'B', 'C'], description: 'Choose one')
 
         password(name: 'PASSWORD', defaultValue: 'Key', description: 'Enter a password')
 
