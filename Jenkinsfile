@@ -1,22 +1,18 @@
-
-    pipeline {
-        agent any
-        stages {
-            stage('Example') {
-                steps {
-                    echo 'Hello World'
-                }
+pipeline {
+    agent any
+    stages {
+        stage('Example') {
+          agent { docker 'maven:3-alpine' } 
+              steps {
+                  sh 'mvn -v'
             }
         }
-        post { 
-            always { 
-                echo 'Running after the stages in all the cases'
-            }
-            success { 
-                echo 'Running after the stages only if success'
-            }
-            failure { 
-                echo 'Running after the stages only if failed'
+        stage('Example Test') {
+            agent { docker 'openjdk:8-jre' } 
+            steps {
+                echo 'Hello, JDK'
+                sh 'java -version'
             }
         }
     }
+}
