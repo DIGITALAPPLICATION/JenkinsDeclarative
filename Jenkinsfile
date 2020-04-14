@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools{
-        maven 'maven-3.0.3' // make sure this is configured in Manage Jenkins --> Global Tool Configuration
+        maven 'maven-3.6.2' // make sure this is configured in Manage Jenkins --> Global Tool Configuration
     }
     stages {
         stage('Example') {
